@@ -8,9 +8,8 @@ namespace Microservice.Framework.Persistence.Queries.Filtering
     {
         #region Constructors
 
-        public NamedCriteria(string name)
+        public NamedCriteria()
         {
-            Name = name;
             Parameters = new Dictionary<string, object>();
         }
 

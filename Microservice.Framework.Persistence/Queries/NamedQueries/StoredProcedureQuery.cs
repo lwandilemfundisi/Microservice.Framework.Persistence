@@ -6,7 +6,8 @@ using System.Linq;
 
 namespace Microservice.Framework.Persistence.Queries.NamedQueries
 {
-    public abstract class StoredProcedureQuery : IDomainQuery, IStoredProcedureQuery
+    public abstract class StoredProcedureQuery<TNamedCriteria> : IDomainQuery, IStoredProcedureQuery<TNamedCriteria>
+        where TNamedCriteria : NamedCriteria, new()
     {
         public StoredProcedureQuery()
         {
@@ -37,15 +38,15 @@ namespace Microservice.Framework.Persistence.Queries.NamedQueries
 
         public int? FirstResult { get; set; }
 
-        public NamedCriteria BuildNamedCriteria()
+        public TNamedCriteria BuildNamedCriteria()
         {
-            var criteria = new NamedCriteria(Name)
+            return new TNamedCriteria()
             {
+                Name = Name,
                 MaximumResult = MaximumResults,
                 FirstResult = FirstResult,
                 Parameters = BuildAndValidateParameters()
             };
-            return criteria;
         }
 
         public IDictionary<string, object> BuildParameters()

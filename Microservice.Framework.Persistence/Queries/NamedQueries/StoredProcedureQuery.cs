@@ -6,7 +6,8 @@ using System.Linq;
 
 namespace Microservice.Framework.Persistence.Queries.NamedQueries
 {
-    public abstract class StoredProcedureQuery<TNamedCriteria> : IDomainQuery, IStoredProcedureQuery<TNamedCriteria>
+    public abstract class StoredProcedureQuery<TModel, TNamedCriteria> : IDomainQuery, IStoredProcedureQuery<TNamedCriteria>
+        where TModel : class
         where TNamedCriteria : NamedCriteria, new()
     {
         public StoredProcedureQuery()

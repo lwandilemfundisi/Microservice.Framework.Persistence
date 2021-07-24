@@ -9,7 +9,7 @@ using Microservice.Framework.Persistence.Queries.Filtering;
 
 namespace Microservice.Framework.Persistence.Queries.NamedQueries
 {
-    public class StoredProcedureQueryHandler<TModel, TNamedCriteria> 
+    public abstract class StoredProcedureQueryHandler<TModel, TNamedCriteria> 
         : IStoredProcedureQueryHandler<TModel, TNamedCriteria> 
         where TModel : class
         where TNamedCriteria : NamedCriteria, new()
